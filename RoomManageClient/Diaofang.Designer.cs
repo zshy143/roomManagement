@@ -45,7 +45,7 @@ namespace hotleManagement
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(729, 374);
+            this.button4.Location = new System.Drawing.Point(710, 379);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(92, 46);
             this.button4.TabIndex = 21;

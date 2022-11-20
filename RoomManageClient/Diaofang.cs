@@ -15,14 +15,17 @@ namespace hotleManagement
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var resdata = JArray.Parse(NetTool.GetUrl(NetTool.baseUrl+"/api/getEmpty/", Encoding.UTF8));
-            dataGridView1.Rows.Clear();
-            int i;
-            for (i = 0; i < resdata.Count() ; i++){
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells["roomid"].Value = resdata[i]["roomid"];
-                dataGridView1.Rows[i].Cells["address"].Value = resdata[i]["address"];
-            }
+           
+                var resdata = JArray.Parse(NetTool.GetUrl(NetTool.baseUrl + "/api/getEmpty/", Encoding.UTF8));
+                dataGridView1.Rows.Clear();
+                int i;
+                for (i = 0; i < resdata.Count(); i++)
+                {
+                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows[i].Cells["roomid"].Value = resdata[i]["roomid"];
+                    dataGridView1.Rows[i].Cells["address"].Value = resdata[i]["address"];
+                }
+        
         }
 
         private void button4_Click(object sender, EventArgs e)

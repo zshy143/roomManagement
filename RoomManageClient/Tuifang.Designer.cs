@@ -65,11 +65,11 @@ namespace hotleManagement
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 105);
+            this.label2.Location = new System.Drawing.Point(103, 105);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.Size = new System.Drawing.Size(82, 15);
             this.label2.TabIndex = 16;
-            this.label2.Text = "学号";
+            this.label2.Text = "学号或工号";
             // 
             // textBox2
             // 

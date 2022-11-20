@@ -48,11 +48,11 @@ namespace hotleManagement
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(90, 71);
+            this.label1.Location = new System.Drawing.Point(45, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.Size = new System.Drawing.Size(82, 15);
             this.label1.TabIndex = 25;
-            this.label1.Text = "学号";
+            this.label1.Text = "学号或工号";
             // 
             // button1
             // 
