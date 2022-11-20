@@ -95,6 +95,9 @@ namespace hotleManagement
                     return 2;//该房间为空，无需退房
                 }
 
+            }else
+            {
+                return 5;//没有查询数据
             }
             reader1.Close();
             readcommand1.Dispose();
@@ -150,6 +153,10 @@ namespace hotleManagement
                     SqlCon.Close();
                     return 4;//当前房间为空
                 }
+            }
+            else
+            {
+                return 5;
             }
             reader1.Close();
             readcommand1.Dispose();
