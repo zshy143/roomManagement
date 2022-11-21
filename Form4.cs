@@ -254,6 +254,14 @@ namespace hotleManagement
                         updateCom2.ExecuteNonQuery();
                         updateCom2.Dispose();
                     }
+                    else
+                    {
+                        MessageBox.Show("没有这个当前房间。", "房间号错误");
+                        reader2.Close();
+                        readcommand2.Dispose();
+                        SqlCon.Close();
+                        return;
+                    }
 
                 }
             }

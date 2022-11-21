@@ -52,8 +52,12 @@ namespace hotleManagement
                 MessageBox.Show("请输入正确的出生日期,保证年龄在17～65之间！","年龄不满足");
                 return;
             }
-
-            if(uniqueNum.Length!=6)
+            if (familyNum < 0 || familyNum > 10)
+            {
+                MessageBox.Show("请输入正确家庭成员数！", "家庭成员数不满足");
+                return;
+            }
+            if (uniqueNum.Length!=6)
             {
                 MessageBox.Show("学号或工号格式不对，请输入6位数字！", "学号或工号错误");
                 return;
@@ -62,6 +66,7 @@ namespace hotleManagement
             int scores = 0;
             scores += age / 10;
             scores += worktime / 2;
+
             scores += familyNum/ 2;
 
             if (zhicheng == "教授") scores += 5;
@@ -84,9 +89,13 @@ namespace hotleManagement
                 //存入数据库
                 string sql = "insert into zhuke(name,sex,age,birth,familyNum,zhicheng,entryTime,workTime,scores,uniqueNum) values('"+name+"','"+sex+"','"+age+"','"+ dateTimePicker1.Value + "','"+familyNum+"','"+zhicheng+"','"+ dateTimePicker2.Value+ "','"+worktime+"','"+scores+"','"+uniqueNum+"')";
                 SqlCommand sql1 = new SqlCommand(sql, SqlCon);
-                if(sql1.ExecuteNonQuery()!=1)
+
+                try
                 {
-                    MessageBox.Show("请检查学号等信息是否正确或是否有信息未填", "保存失败");
+                    sql1.ExecuteNonQuery();
+                }catch
+                {
+                    MessageBox.Show("学号或工号已存在，请重新输入", "保存失败");
                     sql1.Dispose();
                     SqlCon.Close();
                     return;

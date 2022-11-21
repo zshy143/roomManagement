@@ -95,9 +95,10 @@ namespace hotleManagement
                     return 2;//该房间为空，无需退房
                 }
 
-            }else
+            }
+            else
             {
-                return 5;//没有查询数据
+                return 5;//没有当前房间
             }
             reader1.Close();
             readcommand1.Dispose();
@@ -139,6 +140,13 @@ namespace hotleManagement
                 string temp = reader1.GetString(reader1.GetOrdinal("uniqueNum"));
                 int empty = reader1.GetInt32(reader1.GetOrdinal("empty"));
                 scores= reader1.GetInt32(reader1.GetOrdinal("scores"));
+                if (empty == 1)
+                {
+                    reader1.Close();
+                    readcommand1.Dispose();
+                    SqlCon.Close();
+                    return 4;//当前房间为空
+                }
                 if (temp!=uniqueNum)
                 {
                     reader1.Close();
@@ -146,18 +154,13 @@ namespace hotleManagement
                     SqlCon.Close();
                     return 3;//学号或者工号与对应房间对不上
                 }
-                if(empty==1)
-                {
-                    reader1.Close();
-                    readcommand1.Dispose();
-                    SqlCon.Close();
-                    return 4;//当前房间为空
-                }
+
             }
             else
             {
-                return 5;
+                return 5;//没有当前房间
             }
+
             reader1.Close();
             readcommand1.Dispose();
             //存入数据库
