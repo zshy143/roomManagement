@@ -75,6 +75,11 @@ namespace hotleManagement
             try
             {
                 familyNum = int.Parse(textBox2.Text);
+                if (familyNum < 0 || familyNum > 10)
+                {
+                    MessageBox.Show("家庭人数输入不正确 (人数在1-10)！", "填写错误");
+                    return;
+                }
             }
             catch (Exception)
             {
@@ -115,7 +120,7 @@ namespace hotleManagement
                 }
                 else
                 {
-                    MessageBox.Show("提交失败！");
+                    MessageBox.Show("提交失败！（学号或工号已存在）");
                     this.Close();
                 }
 

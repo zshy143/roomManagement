@@ -61,16 +61,39 @@ namespace hotleManagement
             
                 var url = Url + nowroom + "/" + toRoomid + "/" + uniqueNum;
                 int res = int.Parse(NetTool.GetUrl(url, Encoding.UTF8));
-                if (res == 1)
+                switch (res)
                 {
-                    MessageBox.Show("提交成功！");
-                    this.Close();
+                    case 1:
+                        MessageBox.Show("提交成功！");
+                        this.Close();
+                        break;
+                    case 2:
+                        MessageBox.Show("学号或工号已存在！");
+                        this.Close();
+                        break;
+                    case 3:
+                        MessageBox.Show("学号或工号与房间号对应不上！");
+                        this.Close();
+                        break;
+                    case 4:
+                        MessageBox.Show("当前房间为空！");
+                        this.Close();
+                        break;
+                    case 5:
+                        MessageBox.Show("没有当前房间！");
+                        this.Close();
+                        break;
+                    case 6:
+                        MessageBox.Show("要调去的房间不存在！");
+                        this.Close();
+                        break;
+                    default:
+                        MessageBox.Show("服务器发生错误！");
+                        this.Close();
+                        break;
+                       
                 }
-                else
-                {
-                    MessageBox.Show("提交失败！");
-                    this.Close();
-                }
+                
 
             }
         }

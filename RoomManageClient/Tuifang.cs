@@ -42,15 +42,29 @@ namespace hotleManagement
             var Url = NetTool.baseUrl+"/api/tuifang/";
             var url = Url+nowroom+"/"+uniqueNum;
             int res = int.Parse(NetTool.GetUrl(url, Encoding.UTF8));
-            if (res == 1)
+            switch (res)
             {
-                MessageBox.Show("退房成功！");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("退房失败！");
-                this.Close();
+                case 1:
+                    MessageBox.Show("提交成功！");
+                    this.Close();
+                    break;
+                case 2:
+                    MessageBox.Show("房间为空无需退房！");
+                    this.Close();
+                    break;
+                case 3:
+                    MessageBox.Show("学号或工号与房间号对应不上！");
+                    this.Close();
+                    break;
+                case 5:
+                    MessageBox.Show("没有当前房间！");
+                    this.Close();
+                    break;
+                default:
+                    MessageBox.Show("服务器发生错误！");
+                    this.Close();
+                    break;
+
             }
         }
     }
