@@ -103,13 +103,24 @@ namespace hotleManagement
             address = textBox1.Text;
             string sql = "insert into room(empty,address) values(1,'" + address + "')";
             SqlCommand sql1 = new SqlCommand(sql, SqlCon);
-            if (sql1.ExecuteNonQuery() != 1)
+
+            try
+            {
+                sql1.ExecuteNonQuery();
+            }catch
             {
                 MessageBox.Show("请检查该房间是否已经存在", "保存失败");
                 sql1.Dispose();
                 SqlCon.Close();
                 return;
             }
+           /* if (sql1.ExecuteNonQuery() != 1)
+            {
+                MessageBox.Show("请检查该房间是否已经存在", "保存失败");
+                sql1.Dispose();
+                SqlCon.Close();
+                return;
+            }*/
 
             MessageBox.Show("添加房间成功!", "添加成功");
             sql1.Dispose();
